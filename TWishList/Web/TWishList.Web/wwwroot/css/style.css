@@ -1,0 +1,25 @@
+﻿.body {
+    background: url(../images/image7.jpg) center center fixed;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 15px;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar ul li {
+        padding: 10px;
+        margin: 10px;
+        text-align: center;
+        left: 0px;
+        display: inline-block;
+        font-size: x-large;
+}
+
+.footer {
+    text-align: center;
+}
+
+
