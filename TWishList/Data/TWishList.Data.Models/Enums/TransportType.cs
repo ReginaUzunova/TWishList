@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TWishList.Data.Models.Enums
 {
-    public class TransportType
+    public enum TransportType
     {
     }
 }

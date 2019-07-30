@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-using TWishList.Data.Models.Identity;
-
-namespace TWishList.Web.Areas.Identity.Pages.Account
+﻿namespace TWishList.Web.Areas.Identity.Pages.Account
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.Extensions.Logging;
+    using TWishList.Data.Models.Identity;
+
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
@@ -55,7 +54,7 @@ namespace TWishList.Web.Areas.Identity.Pages.Account
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
-            returnUrl = returnUrl ?? Url.Content("~/");
+            ReturnUrl = returnUrl ?? Url.Content("~/");
 
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
@@ -67,7 +66,7 @@ namespace TWishList.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = "/Home/Index";
 
             if (ModelState.IsValid)
             {
@@ -77,7 +76,7 @@ namespace TWishList.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    return Redirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -95,7 +94,6 @@ namespace TWishList.Web.Areas.Identity.Pages.Account
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
     }

@@ -1,0 +1,13 @@
+﻿@using TWishList.Common
+
+@if (this.User.Identity.IsAuthenticated && this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <div class="dropdown collapse d-flex" id="navbarNav">
+        <a class="dropdown-toggle nav-link text-light btn-lg" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin Panel
+        </a>
+        <div class="dropdown-menu btn-primary" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" asp-area="Administrator" asp-controller="Offers" asp-action="Create">Create Offer</a>
+        </div>
+    </div>
+}

@@ -11,6 +11,8 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using TWishList.Data.Models.Identity;
+    using System.Linq;
+    using TWishList.Common;
 
     public class Startup
     {
@@ -65,6 +67,31 @@
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            using (var serviseScope = app.ApplicationServices.CreateScope())
+            {
+                using (var context = serviseScope.ServiceProvider.GetRequiredService<TWishListDbContext>())
+                {
+                    context.Database.EnsureCreated();
+
+                    if (!context.Roles.Any())
+                    {
+                        context.Roles.Add(new IdentityRole
+                        {
+                            Name = GlobalConstants.AdministratorRoleName,
+                            NormalizedName = "ADMIN"
+                        });
+
+                        context.Roles.Add(new IdentityRole
+                        {
+                            Name = GlobalConstants.UserRoleName,
+                            NormalizedName = "USER"
+                        });
+
+                        context.SaveChanges();
+                    }
+                }
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
