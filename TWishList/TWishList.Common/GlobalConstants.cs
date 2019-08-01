@@ -1,8 +1,9 @@
-﻿using System;
-
-namespace TWishList.Common
+﻿namespace TWishList.Common
 {
-    public class Class1
+    public static class GlobalConstants
     {
+        public const string AdministratorRoleName = "Admin";
+
+        public const string UserRoleName = "User";
     }
 }
