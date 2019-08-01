@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace TWishList.Web.InputModels
+﻿namespace TWishList.Web.InputModels
 {
+    using System;
+
     public class OfferCreateInputModel
     {
         public string Name { get; set; }
@@ -21,7 +21,7 @@ namespace TWishList.Web.InputModels
         public int Nights { get; set; }
 
         public string TransportType { get; set; }
-        
+
         public string Company { get; set; }
 
         public string Destination { get; set; }
