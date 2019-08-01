@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TWishList.Data.Common.Models
+﻿namespace TWishList.Data.Common.Models
 {
-    class IDeletableEntity
+    using System;
+
+    public interface IDeletableEntity
     {
+        bool IsDeleted { get; set; }
+
+        DateTime? DeletedOn { get; set; }
     }
 }

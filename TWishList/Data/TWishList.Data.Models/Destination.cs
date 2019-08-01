@@ -2,17 +2,15 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using TWishList.Data.Common.Models;
 
-    public class Destination
+    public class Destination : BaseDeletableModel<int>
     {
         public Destination()
         {
             this.Hotels = new HashSet<Hotel>();
             this.Offers = new HashSet<Offer>();
         }
-
-        [Key]
-        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }

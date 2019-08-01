@@ -2,13 +2,11 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using TWishList.Data.Common.Models;
     using TWishList.Data.Models.Identity;
 
-    public class DesirableDestination
+    public class DesirableDestination : BaseDeletableModel<int>
     {
-        [Key]
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public DateTime? StartDate { get; set; }

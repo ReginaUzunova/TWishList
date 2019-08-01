@@ -4,16 +4,13 @@
     using System.ComponentModel.DataAnnotations;
     using TWishList.Data.Common.Models;
 
-    public class Country : BaseDeletableModel
+    public class Country : BaseDeletableModel<int>
     {
         public Country()
         {
             this.Destinations = new HashSet<Destination>();
             this.DesirableDestinations = new HashSet<DesirableDestination>();
         }
-
-        [Key]
-        public int Id { get; set; }
 
         public string Name { get; set; }
 

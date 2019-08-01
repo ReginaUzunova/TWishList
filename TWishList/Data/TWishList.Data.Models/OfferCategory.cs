@@ -6,16 +6,14 @@ namespace TWishList.Data.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using TWishList.Data.Common.Models;
 
-    public class OfferCategory
+    public class OfferCategory : BaseModel<int>
     {
         public OfferCategory()
         {
             this.Offers = new HashSet<Offer>();
         }
-
-        [Key]
-        public int Id { get; set; }
 
         public string Name { get; set; }
 

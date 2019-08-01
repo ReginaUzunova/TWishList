@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TWishList.Data.Common.Models
+﻿namespace TWishList.Data.Common.Models
 {
-    class IAuditInfo
+    using System;
+
+    public interface IAuditInfo
     {
+        DateTime CreatedOn { get; set; }
+
+        DateTime? ModifiedOn { get; set; }
     }
 }

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-namespace TWishList.Web.Areas.Administration.Controllers
+﻿namespace TWishList.Web.Areas.Administration.Controllers
 {
-    public class OfferController : Controller
+    using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
+
+    public class OfferController : AdminController
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            
         }
     }
 }

@@ -44,10 +44,13 @@
 
                 options.User.RequireUniqueEmail = true;
             });
-                
-                
 
-            services.AddMvc()
+
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddRazorPagesOptions(options =>
                 {

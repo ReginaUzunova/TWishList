@@ -7,16 +7,14 @@ namespace TWishList.Data.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using TWishList.Data.Common.Models;
 
-    public class TravelCompany
+    public class TravelCompany : BaseModel<int>
     {
         public TravelCompany()
         {
             this.Offers = new HashSet<Offer>();
         }
-
-        [Key]
-        public string Id { get; set; }
 
         [Required]
         public string Name { get; set; }

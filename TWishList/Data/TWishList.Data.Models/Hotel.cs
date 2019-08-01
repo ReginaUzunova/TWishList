@@ -1,12 +1,10 @@
 ﻿namespace TWishList.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using TWishList.Data.Common.Models;
 
-    public class Hotel
+    public class Hotel : BaseDeletableModel<int>
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         public string Name { get; set; }
 
