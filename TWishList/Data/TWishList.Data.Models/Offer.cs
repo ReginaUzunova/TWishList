@@ -34,7 +34,7 @@ namespace TWishList.Data.Models
         public TransportType TransportType { get; set; }
 
         [Required]
-        public string CompanyId { get; set; }
+        public int CompanyId { get; set; }
         public virtual TravelCompany Company { get; set; }
 
         public int DestinationId { get; set; }
