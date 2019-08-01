@@ -2,8 +2,9 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using TWishList.Data.Common.Models;
 
-    public class Country
+    public class Country : BaseDeletableModel
     {
         public Country()
         {
