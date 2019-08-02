@@ -13,6 +13,7 @@
     using TWishList.Data.Models.Identity;
     using System.Linq;
     using TWishList.Common;
+    using TWishList.Services.Mapping;
 
     public class Startup
     {
@@ -70,6 +71,8 @@
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            
+
             using (var serviseScope = app.ApplicationServices.CreateScope())
             {
                 using (var context = serviseScope.ServiceProvider.GetRequiredService<TWishListDbContext>())
