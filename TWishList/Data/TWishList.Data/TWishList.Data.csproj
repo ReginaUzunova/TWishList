@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TWishList.Data.Common\TWishList.Data.Common.csproj" />
     <ProjectReference Include="..\TWishList.Data.Models\TWishList.Data.Models.csproj" />
   </ItemGroup>
 
