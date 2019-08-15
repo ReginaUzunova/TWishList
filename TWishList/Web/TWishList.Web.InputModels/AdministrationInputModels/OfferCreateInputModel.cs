@@ -1,4 +1,4 @@
-﻿namespace TWishList.Web.InputModels
+﻿namespace TWishList.Web.InputModels.AdministrationInputModels
 {
     using System;
 

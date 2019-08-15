@@ -5,6 +5,7 @@
 
     public class OfferController : AdminController
     {
+        [HttpPost]
         public async Task<IActionResult> Create()
         {
             return null;
