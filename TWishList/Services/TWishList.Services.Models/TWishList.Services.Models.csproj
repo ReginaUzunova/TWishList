@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\TWishList.Data.Models\TWishList.Data.Models.csproj" />
+    <ProjectReference Include="..\TWishList.Services.Mapping\TWishList.Services.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>

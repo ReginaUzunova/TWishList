@@ -15,16 +15,17 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\TWishList.Data.Models\TWishList.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\TWishList.Data\TWishList.Data.csproj" />
     <ProjectReference Include="..\..\Services\TWishList.Services.Mapping\TWishList.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\TWishList.Services.Models\TWishList.Services.Models.csproj" />
     <ProjectReference Include="..\..\TWishList.Common\TWishList.Common.csproj" />
+    <ProjectReference Include="..\TWishList.Web.InputModels\TWishList.Web.InputModels.csproj" />
+    <ProjectReference Include="..\TWishList.Web.ViewModels\TWishList.Web.ViewModels.csproj" />
   </ItemGroup>
 
 
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\Views\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

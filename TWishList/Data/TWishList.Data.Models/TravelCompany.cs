@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TWishList.Data.Models
+﻿namespace TWishList.Data.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using TWishList.Data.Common.Models;
@@ -20,9 +15,21 @@ namespace TWishList.Data.Models
         public string Name { get; set; }
 
         [Required]
-        public string Information { get; set; }
+        public string UniqueIdentifier { get; set; }
 
-        public DateTime ActiveSince { get; set; }
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
+
+        public int CountryId { get; set; }
+        public Country Country { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        public string CompanyWebsite { get; set; }
 
         public virtual ICollection<Offer> Offers { get; set; }
     }
