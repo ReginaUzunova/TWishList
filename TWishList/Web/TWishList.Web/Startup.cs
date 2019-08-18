@@ -14,6 +14,10 @@
     using System.Linq;
     using TWishList.Common;
     using TWishList.Services.Mapping;
+    using TWishList.Services.Data;
+    using TWishList.Web.InputModels;
+    using System.Reflection;
+    using TWishList.Services.Models;
 
     public class Startup
     {
@@ -46,8 +50,6 @@
                 options.User.RequireUniqueEmail = true;
             });
 
-
-
             services.AddMvc(options =>
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
@@ -67,11 +69,16 @@
             });
 
             services.AddSingleton(this.configuration);
+
+            services.AddScoped<ICompanyRequestService, CompanyRequestService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            
+            AutoMapperConfig.RegisterMappings(
+                typeof(CompanyRequestInputModel).GetTypeInfo().Assembly,
+                typeof(CompanyRequestServiceModel).GetTypeInfo().Assembly);
+                
 
             using (var serviseScope = app.ApplicationServices.CreateScope())
             {

@@ -31,6 +31,9 @@
 
         public string CompanyWebsite { get; set; }
 
+        public int RequestId { get; set; }
+        public virtual CompanyRequest CompanyRequest { get; set; }
+
         public virtual ICollection<Offer> Offers { get; set; }
     }
 }

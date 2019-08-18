@@ -5,7 +5,7 @@
     using TWishList.Services.Mapping;
 
 
-    public class CountryServiceModel : IMapFrom<Country>
+    public class CountryServiceModel : IMapFrom<Country>, IMapTo<Country>
     {
         public int Id { get; set; }
 

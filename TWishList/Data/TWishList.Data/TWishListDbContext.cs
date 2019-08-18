@@ -31,6 +31,8 @@
 
         public DbSet<TravelCompany> TravelCompanies { get; set; }
 
+        public DbSet<CompanyRequest> CompanyRequests { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<DesirableDestination>()

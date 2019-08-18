@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\TWishList.Data\TWishList.Data.csproj" />
+    <ProjectReference Include="..\..\Services\TWishList.Services.Data\TWishList.Services.Data.csproj" />
     <ProjectReference Include="..\..\Services\TWishList.Services.Mapping\TWishList.Services.Mapping.csproj" />
     <ProjectReference Include="..\..\Services\TWishList.Services.Models\TWishList.Services.Models.csproj" />
     <ProjectReference Include="..\..\TWishList.Common\TWishList.Common.csproj" />
@@ -26,6 +27,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Views\TravelCompany\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
