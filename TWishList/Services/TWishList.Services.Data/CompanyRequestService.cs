@@ -1,5 +1,6 @@
 ﻿namespace TWishList.Services.Data
 {
+    using System.Collections.Generic;
     using TWishList.Data;
     using TWishList.Data.Models;
     using TWishList.Services.Models;
@@ -19,6 +20,11 @@
 
             context.CompanyRequests.Add(companyRequest);
             context.SaveChanges();
+        }
+
+        public IEnumerable<CompanyRequest> All()
+        {
+            return context.CompanyRequests;
         }
     }
 }

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TWishList.Web.ViewModels
+namespace TWishList.Web.ViewModels.AdministrationViewModels
 {
-    public class TravelCompanyViewModel
+    public class CompanyRequestViewModel
     {
         public int Id { get; set; }
 
