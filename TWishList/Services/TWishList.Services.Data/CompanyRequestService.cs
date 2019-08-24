@@ -1,8 +1,11 @@
 ﻿namespace TWishList.Services.Data
 {
+    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
+    using System.Linq;
     using TWishList.Data;
     using TWishList.Data.Models;
+    using TWishList.Services.Mapping;
     using TWishList.Services.Models;
 
     public class CompanyRequestService : ICompanyRequestService
@@ -22,9 +25,15 @@
             context.SaveChanges();
         }
 
-        public IEnumerable<CompanyRequest> All()
+        public IEnumerable<CompanyRequestServiceModel> GetAll()
         {
-            return context.CompanyRequests;
+            //this.context.CompanyRequests.Include
+
+            IEnumerable<CompanyRequestServiceModel> list = this.context.CompanyRequests.Include(x => x.Country).OrderBy(x => x.CreatedOn).To<CompanyRequestServiceModel>().ToList();
+
+            return list;
         }
+
+        
     }
 }

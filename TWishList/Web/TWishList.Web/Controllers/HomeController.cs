@@ -10,8 +10,6 @@
 
     public class HomeController : BaseController
     {
-        private const string RequestInfoMessage = "Thank you, your request has been accepted.";
-
         private readonly ICompanyRequestService companyRequestService;
 
         public HomeController(ICompanyRequestService companyRequestService)
@@ -41,7 +39,6 @@
 
             this.companyRequestService.CreateRequest(companyRequestServiceModel);
 
-            this.TempData["info"] = RequestInfoMessage;
 
             return RedirectToAction("Index", "Home");
         }

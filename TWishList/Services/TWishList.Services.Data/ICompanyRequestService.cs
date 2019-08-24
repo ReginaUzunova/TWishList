@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TWishList.Data.Models;
 using TWishList.Services.Models;
@@ -10,6 +11,6 @@ namespace TWishList.Services.Data
     {
         void CreateRequest(CompanyRequestServiceModel serviceModel);
 
-        IEnumerable<CompanyRequest> All();
+        IEnumerable<CompanyRequestServiceModel> GetAll();
     }
 }

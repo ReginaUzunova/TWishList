@@ -18,6 +18,7 @@
     using TWishList.Web.InputModels;
     using System.Reflection;
     using TWishList.Services.Models;
+    using TWishList.Web.ViewModels.AdministrationViewModels.CompanyRequests;
 
     public class Startup
     {
@@ -77,7 +78,8 @@
         {
             AutoMapperConfig.RegisterMappings(
                 typeof(CompanyRequestInputModel).GetTypeInfo().Assembly,
-                typeof(CompanyRequestServiceModel).GetTypeInfo().Assembly);
+                typeof(CompanyRequestServiceModel).GetTypeInfo().Assembly,
+                typeof(CompanyRequestViewModel).GetTypeInfo().Assembly);
                 
 
             using (var serviseScope = app.ApplicationServices.CreateScope())
