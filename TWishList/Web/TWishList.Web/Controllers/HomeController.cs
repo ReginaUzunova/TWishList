@@ -39,7 +39,6 @@
 
             this.companyRequestService.CreateRequest(companyRequestServiceModel);
 
-
             return RedirectToAction("Index", "Home");
         }
 

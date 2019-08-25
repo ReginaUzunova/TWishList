@@ -3,6 +3,7 @@
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using TWishList.Data;
     using TWishList.Data.Models;
     using TWishList.Services.Mapping;
@@ -22,18 +23,21 @@
             CompanyRequest companyRequest = AutoMapper.Mapper.Map<CompanyRequest>(companyRequestServiceModel);
 
             context.CompanyRequests.Add(companyRequest);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public IEnumerable<CompanyRequestServiceModel> GetAll()
         {
-            //this.context.CompanyRequests.Include
-
             IEnumerable<CompanyRequestServiceModel> list = this.context.CompanyRequests.Include(x => x.Country).OrderBy(x => x.CreatedOn).To<CompanyRequestServiceModel>().ToList();
 
             return list;
         }
 
-        
+        public CompanyRequestServiceModel GetById(int id)
+        {
+            return this.context.CompanyRequests
+                .To<CompanyRequestServiceModel>()
+                .SingleOrDefault(request => request.Id == id);
+        }
     }
 }

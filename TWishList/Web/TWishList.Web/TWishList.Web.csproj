@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\Views\TravelCompany\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

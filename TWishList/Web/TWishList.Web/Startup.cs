@@ -102,7 +102,7 @@
                             NormalizedName = "USER"
                         });
 
-                        context.SaveChanges();
+                        context.SaveChangesAsync();
                     }
                 }
             }
