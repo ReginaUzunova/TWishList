@@ -1,5 +1,6 @@
 ﻿namespace TWishList.Services.Data
 {
+    using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -16,7 +17,7 @@
         private readonly TWishListDbContext context;
         private readonly ICompanyRequestService companyRequestService;
 
-        public TravelCompanyService(TWishListDbContext context, ICompanyRequestService companyRequestService)
+        public TravelCompanyService(TWishListDbContext context, ICompanyRequestService companyRequestService, RoleManager roleManager)
         {
             this.context = context;
             this.companyRequestService = companyRequestService;
@@ -44,7 +45,7 @@
 
         public bool AddToRole(string username, string role)
         {
-            if (context.Roles.Contains(GlobalConstants))
+            if (context.Roles.Contains(GlobalConstants.CompanyRoleName))
             {
 
             }

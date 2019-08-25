@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\TWishList.Data\TWishList.Data.csproj" />
+    <ProjectReference Include="..\..\TWishList.Common\TWishList.Common.csproj" />
     <ProjectReference Include="..\TWishList.Services.Models\TWishList.Services.Models.csproj" />
   </ItemGroup>
 

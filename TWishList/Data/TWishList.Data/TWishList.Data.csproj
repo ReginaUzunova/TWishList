@@ -20,4 +20,8 @@
     <ProjectReference Include="..\TWishList.Data.Models\TWishList.Data.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Seeding\" />
+  </ItemGroup>
+
 </Project>
