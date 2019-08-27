@@ -12,7 +12,7 @@
     using TWishList.Data.Models;
     using TWishList.Data.Models.Identity;
 
-    public class TWishListDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
+    public class TWishListDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
             typeof(TWishListDbContext).GetMethod(
@@ -87,13 +87,24 @@
             builder.Entity<Destination>()
                 .HasOne(x => x.Country)
                 .WithMany(x => x.Destinations)
-                .HasForeignKey(x => x.CountryId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(x => x.CountryId);
 
             builder.Entity<Hotel>()
                 .HasOne(x => x.Destination)
                 .WithMany(x => x.Hotels)
                 .HasForeignKey(x => x.DestinationId);
+
+            builder.Entity<CompanyRequest>()
+                  .HasOne(x => x.TravelCompany)
+                  .WithOne(x => x.CompanyRequest)
+                  .HasForeignKey<TravelCompany>(x => x.RequestId)
+                  .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<ApplicationUser>()
+                  .HasOne(x => x.CompanyRequest)
+                  .WithOne(x => x.User)
+                  .HasForeignKey<CompanyRequest>(x => x.UserId);
+
 
             base.OnModelCreating(builder);
 

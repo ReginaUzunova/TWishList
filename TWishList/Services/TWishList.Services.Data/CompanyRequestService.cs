@@ -12,32 +12,36 @@
     public class CompanyRequestService : ICompanyRequestService
     {
         private readonly TWishListDbContext context;
+        private readonly IUserService userService;
 
-        public CompanyRequestService(TWishListDbContext context)
+        public CompanyRequestService(TWishListDbContext context, IUserService userService)
         {
             this.context = context;
+            this.userService = userService;
         }
 
-        public void CreateRequest(CompanyRequestServiceModel companyRequestServiceModel)
+        public async Task<bool> Create(CompanyRequestServiceModel companyRequestServiceModel)
         {
-            CompanyRequest companyRequest = AutoMapper.Mapper.Map<CompanyRequest>(companyRequestServiceModel);
+            CompanyRequest companyRequest = companyRequestServiceModel.To<CompanyRequest>();
 
             context.CompanyRequests.Add(companyRequest);
-            context.SaveChangesAsync();
+            int result = await context.SaveChangesAsync();
+
+            return result > 0;
         }
 
         public IEnumerable<CompanyRequestServiceModel> GetAll()
         {
-            IEnumerable<CompanyRequestServiceModel> list = this.context.CompanyRequests.Include(x => x.Country).OrderBy(x => x.CreatedOn).To<CompanyRequestServiceModel>().ToList();
+            IEnumerable<CompanyRequestServiceModel> listOfRequests = this.context.CompanyRequests.Include(x => x.Country).Include(x => x.User).OrderBy(x => x.CreatedOn).To<CompanyRequestServiceModel>().ToList();
 
-            return list;
+            return listOfRequests;
         }
 
-        public CompanyRequestServiceModel GetById(int id)
+        public CompanyRequestServiceModel GetById(string id)
         {
             return this.context.CompanyRequests
                 .To<CompanyRequestServiceModel>()
-                .SingleOrDefault(request => request.Id == id);
+                .SingleOrDefault(request => request.UserId == id);
         }
     }
 }

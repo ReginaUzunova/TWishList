@@ -16,9 +16,9 @@ namespace TWishList.Web.Areas.Administration.Controllers
             this.travelCompanyService = travelCompanyService;
         }
 
-        public async Task<IActionResult> CreateTravelCompany()
-        {
+        //public async Task<IActionResult> CreateTravelCompany()
+        //{
 
-        }
+        //}
     }
 }

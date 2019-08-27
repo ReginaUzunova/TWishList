@@ -19,6 +19,9 @@
     using System.Reflection;
     using TWishList.Services.Models;
     using TWishList.Web.ViewModels.AdministrationViewModels.CompanyRequests;
+    using Microsoft.Extensions.Logging;
+    using TWishList.Web.Middlewares;
+    using TWishList.Web.ViewModels;
 
     public class Startup
     {
@@ -34,7 +37,7 @@
             services.AddDbContext<TWishListDbContext>(options =>
                 options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<TWishListDbContext>()
                 .AddDefaultTokenProviders()
                 .AddDefaultUI(UIFramework.Bootstrap4);
@@ -71,41 +74,21 @@
 
             services.AddSingleton(this.configuration);
 
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICompanyRequestService, CompanyRequestService>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             AutoMapperConfig.RegisterMappings(
-                typeof(CompanyRequestInputModel).GetTypeInfo().Assembly,
-                typeof(CompanyRequestServiceModel).GetTypeInfo().Assembly,
-                typeof(CompanyRequestViewModel).GetTypeInfo().Assembly);
+                typeof(TravelCompanyInputModel).GetTypeInfo().Assembly,
+                typeof(TravelCompanyServiceModel).GetTypeInfo().Assembly,
+                typeof(TravelCompanyViewModel).GetTypeInfo().Assembly,
+                typeof(CompanyRequestServiceModel).GetTypeInfo().Assembly);
                 
 
-            using (var serviseScope = app.ApplicationServices.CreateScope())
-            {
-                using (var context = serviseScope.ServiceProvider.GetRequiredService<TWishListDbContext>())
-                {
-                    context.Database.EnsureCreated();
 
-                    if (!context.Roles.Any())
-                    {
-                        context.Roles.Add(new IdentityRole
-                        {
-                            Name = GlobalConstants.AdministratorRoleName,
-                            NormalizedName = "ADMIN"
-                        });
 
-                        context.Roles.Add(new IdentityRole
-                        {
-                            Name = GlobalConstants.UserRoleName,
-                            NormalizedName = "USER"
-                        });
-
-                        context.SaveChangesAsync();
-                    }
-                }
-            }
 
             if (env.IsDevelopment())
             {
@@ -122,6 +105,8 @@
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
+
+            app.UseSeedMiddleware();
 
             app.UseMvc(routes =>
             {

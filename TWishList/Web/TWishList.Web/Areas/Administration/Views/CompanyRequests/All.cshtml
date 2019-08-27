@@ -5,15 +5,16 @@
 }
 
 
-    <div class="container mobile-fondsize-11 shadow pr-4 pl-4 pb-4 mb-4 bg-white">
+    <div class="container container-large shadow pr-4 pl-4 pb-4 mb-4 bg-white">
         <div class="mobile-fondsize-20 h3 text-center text-dark font-weight-bold pb-2">Companies Requests</div>
         <table class="table table-hover">
             <thead>
                 <tr class="row">
                     <th scope="col" class="col-md-2 col d-flex justify-content-center font-weight-bold">Name</th>
-                    <th scope="col" class="col-md-2 col d-flex justify-content-center font-weight-bold">Unique Identifier</th>
+                    <th scope="col" class="col-md-1 col d-flex justify-content-center font-weight-bold">Unique Identifier</th>
+                    <th scope="col" class="col-md-2 col d-flex justify-content-center font-weight-bold">Liable Person</th>
                     <th scope="col" class="col-md-2 col d-flex justify-content-center font-weight-bold">Email</th>
-                    <th scope="col" class="col-md-2 col d-flex justify-content-center font-weight-bold">Phone Number</th>
+                    <th scope="col" class="col-md-1 col d-flex justify-content-center font-weight-bold">Phone Number</th>
                     <th scope="col" class="col-md-2 col d-flex justify-content-center font-weight-bold">Country / City</th>
                     <th scope="col" class="col-md-2 col d-flex justify-content-center font-weight-bold">Company Website</th>
                 </tr>
@@ -23,16 +24,19 @@
                 {
                 <tr class="row">
                     <td class="col-md-2 col d-flex justify-content-center">
-                        @company.Name
+                        @company.CompanyName
+                    </td>
+                    <td class="col-md-1 col d-flex justify-content-center">
+                        @company.CompanyUniqueIdentifier
                     </td>
                     <td class="col-md-2 col d-flex justify-content-center">
-                        @company.UniqueIdentifier
+                        @company.CompanyLiablePerson
                     </td>
                     <td class="col-md-2 col d-flex justify-content-center">
-                        @company.Email
+                        @company.CompanyEmail
                     </td>
-                    <td class="col-md-2 col d-flex justify-content-center">
-                        @company.PhoneNumber
+                    <td class="col-md-1 col d-flex justify-content-center">
+                        @company.CompanyPhoneNumber
                     </td>
                     <td class="col-md-2 col d-flex justify-content-center">
                         @company.Country.Name / @company.City

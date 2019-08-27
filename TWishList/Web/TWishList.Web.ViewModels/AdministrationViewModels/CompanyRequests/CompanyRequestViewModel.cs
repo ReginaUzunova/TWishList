@@ -11,15 +11,15 @@ namespace TWishList.Web.ViewModels.AdministrationViewModels.CompanyRequests
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string CompanyName { get; set; }
 
-        public string UniqueIdentifier { get; set; }
+        public string CompanyUniqueIdentifier { get; set; }
 
-        public string Email { get; set; }
+        public string CompanyLiablePerson { get; set; }
 
-        public string PhoneNumber { get; set; }
+        public string CompanyEmail { get; set; }
 
-
+        public string CompanyPhoneNumber { get; set; }
        
         public int CountryId { get; set; }
         public CountryServiceModel Country { get; set; }

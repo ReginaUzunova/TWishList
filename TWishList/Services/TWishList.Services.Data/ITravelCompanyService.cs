@@ -5,6 +5,6 @@
 
     public interface ITravelCompanyService
     {
-        Task<bool> CreateTravelCompany(TravelCompanyServiceModel travelCompanyServiceModel);
+        Task<bool> Create(TravelCompanyServiceModel travelCompanyServiceModel);
     }
 }

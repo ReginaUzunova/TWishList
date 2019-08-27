@@ -12,6 +12,9 @@
                 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-white" asp-area="" asp-controller="CompanyRequests" asp-action="Create">Business</a>
+            </li>
+            <li class="nav-item">
                 <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
             </li>
         </ul>
@@ -29,8 +32,4 @@ else
     </ul>
 }
 
-<ul class="nav navbar-nav navbar-right">
-    <li class="nav-item">
-        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="CompanyRequest">Business</a>
-    </li>
-</ul>
+

@@ -9,6 +9,7 @@
     using TWishList.Common;
     using TWishList.Data;
     using TWishList.Data.Models;
+    using TWishList.Data.Models.Identity;
     using TWishList.Services.Mapping;
     using TWishList.Services.Models;
 
@@ -16,25 +17,20 @@
     {
         private readonly TWishListDbContext context;
         private readonly ICompanyRequestService companyRequestService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public TravelCompanyService(TWishListDbContext context, ICompanyRequestService companyRequestService, RoleManager roleManager)
+        public TravelCompanyService(
+            TWishListDbContext context,
+            ICompanyRequestService companyRequestService,
+            UserManager<ApplicationUser> userManager)
         {
             this.context = context;
             this.companyRequestService = companyRequestService;
+            this.userManager = userManager;
         }
 
-        public async Task<bool> CreateTravelCompany(CompanyRequestServiceModel companyRequestServiceModel)
+        public async Task<bool> Create(TravelCompanyServiceModel travelCompanyServiceModel)
         {
-            var currentCompanyRequestServiceModel = this.companyRequestService.GetById(companyRequestServiceModel.Id);
-
-            var temporaryPassword = TemporaryPasswordGenerator();
-            var username = UsernameGenerator(companyRequestServiceModel.Name);
-
-            var travelCompanyServiceModel = currentCompanyRequestServiceModel.To<TravelCompanyServiceModel>();
-
-            travelCompanyServiceModel.Username = username;
-            travelCompanyServiceModel.Password = temporaryPassword;
-
             TravelCompany travelCompany = travelCompanyServiceModel.To<TravelCompany>();
 
             this.context.TravelCompanies.Add(travelCompany);
@@ -43,49 +39,11 @@
             return result > 0;
         }
 
-        public bool AddToRole(string username, string role)
+
+        public bool AddToCompanyRole(string username, string role)
         {
-            if (context.Roles.Contains(GlobalConstants.CompanyRoleName))
-            {
-
-            }
-            var user = GetUserByUsername(username);
-
-            this.userManager.AddToRoleAsync(user, role).GetAwaiter().GetResult();
+            
             return true;
         }
-
-        private string TemporaryPasswordGenerator()
-        {
-            int passwordLenght = 10;
-            string characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-            StringBuilder randomPassword = new StringBuilder(passwordLenght);
-            Random random = new Random(passwordLenght);
-
-            for (int i = 0; i < passwordLenght; i++)
-            {
-                randomPassword.Append(characters[random.Next(characters.Length)]);
-            }
-
-            return randomPassword.ToString();
-        }
-
-        private string UsernameGenerator(string companyName)
-        {
-            int randomLenght = 5;
-            string characters = "0123456789";
-
-            StringBuilder randomUsername = new StringBuilder(randomLenght);
-            Random random = new Random(randomLenght);
-
-            for (int i = 0; i < randomLenght; i++)
-            {
-                randomUsername.Append(characters[random.Next(characters.Length)]);
-            }
-
-            return companyName + randomUsername.ToString();
-        }
-
     }
 }

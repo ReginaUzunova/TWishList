@@ -19,6 +19,9 @@
 
         public string FullName { get; set; }
 
+        //public int? CompanyId { get; set; }
+        //public virtual TravelCompany Company { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
@@ -26,6 +29,9 @@
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
+
+        //public int? CompanyRequestId { get; set; }
+        public virtual CompanyRequest CompanyRequest { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

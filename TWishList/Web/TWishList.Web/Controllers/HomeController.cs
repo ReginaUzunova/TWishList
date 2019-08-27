@@ -22,26 +22,6 @@
             return View();
         }
         
-        public IActionResult CompanyRequest()
-        {
-            return this.View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CompanyRequest(CompanyRequestInputModel companyRequestInputModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(companyRequestInputModel);
-            }
-
-            CompanyRequestServiceModel companyRequestServiceModel = AutoMapper.Mapper.Map<CompanyRequestServiceModel>(companyRequestInputModel);
-
-            this.companyRequestService.CreateRequest(companyRequestServiceModel);
-
-            return RedirectToAction("Index", "Home");
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -9,10 +9,10 @@ namespace TWishList.Services.Data
 
     public interface ICompanyRequestService
     {
-        void CreateRequest(CompanyRequestServiceModel serviceModel);
+        Task<bool> Create(CompanyRequestServiceModel companyRequestServiceModel);
 
         IEnumerable<CompanyRequestServiceModel> GetAll();
 
-        CompanyRequestServiceModel GetById(int id);
+        CompanyRequestServiceModel GetById(string id);
     }
 }

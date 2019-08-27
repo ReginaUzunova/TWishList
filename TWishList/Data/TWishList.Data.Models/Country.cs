@@ -17,5 +17,6 @@
         public virtual ICollection<Destination> Destinations { get; set; }
 
         public virtual ICollection<DesirableDestination> DesirableDestinations { get; set; }
+
     }
 }
